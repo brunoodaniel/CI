@@ -32,9 +32,10 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: false
-          tags: ola-devops:latest
-
+          push: true
+          tags: |
+            ghcr.io/brunoodaniel/CI:latest
+            ghcr.io/brunoodaniel/CI:${{ github.sha }}
   deploy-to-local:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: test-and-build
